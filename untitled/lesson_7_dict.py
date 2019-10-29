@@ -35,10 +35,6 @@
 #     'Donec lorem ex, aliquet sed rhoncus vitae, tempor vel dolor. Duis feugiat odio in felis facilisis, id euismod sem vulputate. Nullam et tellus ' \
 #     'et ipsum scelerisque sagittis. Suspendisse id efficitur tellus. Cras in dolor ac eros porttitor pulvinar nec in nisl. Etiam scelerisque eros sit ' \
 #     'amet lacinia tempor. In egestas enim sed ex dapibus, nec malesuada ex dapibus.".split()
-# # for char in line:
-# #     if char in ',.':
-# #         line = line.replace(char, '')
-# #         line = line.split()
 # addict = {}
 # for elem in line:
 #     elem = elem.strip(',')
