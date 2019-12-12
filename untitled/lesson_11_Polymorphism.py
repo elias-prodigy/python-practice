@@ -45,39 +45,39 @@ print(str(person2))
 print(repr(person2))
 
 
-# class Teacher(Zavkaf):
-#
-#     def __init__(self, name, surname, position, money, kaf_name):
-#         super(Zavkaf, self).__init__(name, surname, datetime.now())
-#         super(Teacher, self).__init__(kaf_name, position)
-#         self.money = money
-#
-#     def __str__(self):
-#         return f"{self.name} {self.surname} {self.position} {self.money}"
-#
-#     def __repr__(self):
-#         return f"Teacher({self.name} {self.surname} {self.position} {self.money})"
-#
-#
-# person3 = Teacher("Вася", "Пупкин", "работает преподом", "и получает копейки", "")
-# print(str(person3))
-# print(repr(person3))
-#
-#
-# class Student(Person):
-#
-#     def __init__(self, **kwargs):
-#         self.position = kwargs.pop("position")
-#         self.money = kwargs.pop("money")
-#         super().__init__(**kwargs)
-#
-#     def __str__(self):
-#         person_str = super().__str__()
-#         return f"{person_str}, {self.position} {self.money}"
-#
-#
-# person4 = Student(name = "Кульбит", surname = "Пробит", date_of_birth = datetime.now(), position = "не работает - но учится", money = "и не получает ничего")
-# print(str(person4))
+class Teacher(Zavkaf):
+
+    def __init__(self, name, surname, position, money, kaf_name):
+        super(Zavkaf, self).__init__(name, surname, datetime.now())
+        super(Teacher, self).__init__(kaf_name, position)
+        self.money = money
+
+    def __str__(self):
+        return f"{self.name} {self.surname} {self.position} {self.money}"
+
+    def __repr__(self):
+        return f"Teacher({self.name} {self.surname} {self.position} {self.money})"
+
+
+person3 = Teacher("Вася", "Пупкин", "работает преподом", "и получает копейки", "")
+print(str(person3))
+print(repr(person3))
+
+
+class Student(Person):
+
+    def __init__(self, **kwargs):
+        self.position = kwargs.pop("position")
+        self.money = kwargs.pop("money")
+        super().__init__(**kwargs)
+
+    def __str__(self):
+        person_str = super().__str__()
+        return f"{person_str}, {self.position} {self.money}"
+
+
+person4 = Student(name = "Кульбит", surname = "Пробит", date_of_birth = datetime.now(), position = "не работает - но учится", money = "и не получает ничего")
+print(str(person4))
 
 # Автомобиль, Поезд, Транспортное средство, Мотоцикл
 
