@@ -1,5 +1,5 @@
 import sys, random, pygame
-
+import colors
 
 class Paddle(pygame.Rect):
 
@@ -33,21 +33,25 @@ class Ball(pygame.Rect):
 
 
 class Arkanoid:
-    HEIGHT = 800
-    WIDTH = 890
-    PADDLE_WIDTH = 100
-    PADDLE_HEIGHT = 10
+    HEIGHT = 960
+    WIDTH = 1280
+    PADDLE_WIDTH = 200
+    PADDLE_HEIGHT = 15
     PADDLE_VELOCITY = 12
-    BALL_WIDTH = 10
+    BALL_WIDTH = 20
     BALL_VELOCITY = 7
     BALL_ANGLE = 0
-    BRICK_WIDTH = 100
-    BRICK_HEIGHT = 50
+    BALL_COLOR = colors.LIGHTYELLOW2
+    BRICK_WIDTH = 70
+    BRICK_HEIGHT = 30
+    BRICK_COLOR = random.choice(colors.colorlist)
     STATE_BALL_IN_PADDLE = 0
     STATE_PLAYING = 1
     STATE_WON = 2
     STATE_GAME_OVER = 3
     COLOUR = (255, 0, 0)
+    BACKGROUND_IMAGE = pygame.image.load("images/back1.jpeg")
+    PADDLE_IMAGE = pygame.image.load("images/paddle.png")
 
     def __init__(self):
         pygame.init()
@@ -71,12 +75,15 @@ class Arkanoid:
 
         self.bricks = []
         y_ofs = 30
-        for i in range(4):
+        for i in range(8):
             x_ofs = 10
-            for j in range(8):
+            for j in range(15):
                 self.bricks.append(pygame.Rect(x_ofs, y_ofs, self.BRICK_WIDTH, self.BRICK_HEIGHT))
-                x_ofs += self.BRICK_WIDTH + 10
-            y_ofs += self.BRICK_HEIGHT + 5
+                x_ofs += self.BRICK_WIDTH + 15
+            y_ofs += self.BRICK_HEIGHT + 10
+
+    def get_brick_color(self):
+        return random.choice(colors.colorlist)
 
     def check_ball_hits_wall(self):
         for ball in self.balls:
@@ -137,7 +144,7 @@ class Arkanoid:
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                     return
 
-            self.screen.fill((0, 45, 45))
+            self.screen.blit(self.BACKGROUND_IMAGE, (0, 0))
             self.check_input()
 
             for paddle in self.paddles:
@@ -146,10 +153,10 @@ class Arkanoid:
 
             for ball in self.balls:
                 ball.move_ball()
-                pygame.draw.rect(self.screen, self.COLOUR, ball)
+                pygame.draw.rect(self.screen, self.BALL_COLOR, ball)
 
             for brick in self.bricks:
-                pygame.draw.rect(self.screen, self.COLOUR, brick)
+                pygame.draw.rect(self.screen, self.get_brick_color(), brick)
 
             if self.state == self.STATE_PLAYING:
                 self.check_ball_hits_brick()
@@ -157,7 +164,7 @@ class Arkanoid:
                 self.check_ball_hits_wall()
             elif self.state == self.STATE_BALL_IN_PADDLE:
                 self.balls[0].left = self.paddles[0].left + self.paddles[0].width / 2
-                self.balls[0].top = self.paddles[0].top - 2 * self.balls[0].height + 2
+                self.balls[0].top = self.paddles[0].top - 1.5 * self.balls[0].height
                 self.show_message("PRESS SPACE TO LAUNCH THE BALL")
             elif self.state == self.STATE_GAME_OVER:
                 self.show_message("GAME OVER. PRESS ESC TO EXIT THE GAME")
@@ -165,8 +172,10 @@ class Arkanoid:
                 self.show_message("YOU WON! ESC TO EXIT THE GAME")
 
             self.show_stats()
-            pygame.display.flip()
-            self.clock.tick(40)
+            pygame.display.update()
+            # pygame.display.flip()
+            # self.screen.fill((0, 45, 45))
+            self.clock.tick(60)
 
 
 if __name__ == '__main__':
