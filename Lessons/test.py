@@ -1,6 +1,6 @@
 import unittest
 
-from lesson_17_Unit_Testing import Pizza,\
+from Lesson_17_Unit_Testing import Pizza,\
     Order, PIZZA_SMALL_SIZE, PAYMENT_BY_CARD, PAYMENT_BY_CASH, PIZZA_BIG_SIZE
 
 

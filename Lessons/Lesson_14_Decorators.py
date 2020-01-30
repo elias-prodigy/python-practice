@@ -23,12 +23,3 @@ class Validation:
 @Validation
 def function(num):
     print(num)
-
-
-# value = Validation(function)
-# value(1)
-
-function(1)
-
-# Task_2
-#

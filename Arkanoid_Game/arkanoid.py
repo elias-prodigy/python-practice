@@ -1,6 +1,7 @@
 import sys, random, pygame
 import colors
 
+
 class Paddle(pygame.Rect):
 
     def __init__(self, velocity, left_key, right_key, *args, **kwargs):

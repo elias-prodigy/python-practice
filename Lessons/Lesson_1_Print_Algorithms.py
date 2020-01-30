@@ -1,3 +1,20 @@
+name = 'Elias'
+day = 'Wednesday'
+print('Good day ' + name + '! ' + day + ' is a perfect day to learn some python.')
+
+name = 'Elias'
+surname = 'Kolohoida'
+print('Hello ' + name + ' ' + surname)
+
+a = 8
+b = 4
+print(a + b)
+print(a - b)
+print(a * b)
+print(a / b)
+print(a // b)
+print(a ** b)
+
 # Задание1
 # Выполнить вычисления, записать в переменную и вывести в результате целую часть и дробную часть от деления
 
